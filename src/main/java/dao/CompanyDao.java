@@ -1,7 +1,7 @@
 package dao;
 
 import entity.CompanyEntity;
-import db.handle.ConnectionManager;
+import db.ConnectionManager;
 import lombok.Data;
 import lombok.Getter;
 import lombok.SneakyThrows;
@@ -9,7 +9,6 @@ import lombok.SneakyThrows;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -21,7 +20,7 @@ public class CompanyDao implements Dao<CompanyEntity> {
 
     private static final String FIND_ALL_SQL = """
             SELECT id, name, img_key
-            FROM package.company
+            FROM companies
             """;
 
     private static final String FIND_BY_ID_SQL = FIND_ALL_SQL + """
@@ -29,7 +28,7 @@ public class CompanyDao implements Dao<CompanyEntity> {
             """;
 
     private static final String INSERT_SQL = """
-            INSERT INTO package.company (name, img_key)
+            INSERT INTO companies (name, img_key)
             VALUES (?, ?)
             """;
 

@@ -21,6 +21,12 @@ public class PropertiesUtil {
     }
 
     public static String getProperty(String key) {
-        return PROPERTIES.getProperty(key);
+        String value = PROPERTIES.getProperty(key);
+        if (value != null && value.startsWith("${") && value.endsWith("}")) {
+            String envKey = value.substring(2, value.length() - 1);
+            String envValue = System.getenv(envKey);
+            return envValue != null ? envValue : value;
+        }
+        return value;
     }
 }

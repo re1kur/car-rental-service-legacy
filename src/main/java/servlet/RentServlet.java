@@ -21,7 +21,7 @@ public class RentServlet extends HttpServlet {
         Optional<ReadRentalDto> maybeRental = rentalService.read(id);
         if (maybeRental.isPresent()) {
             req.setAttribute("rental", maybeRental.get());
-            req.getRequestDispatcher("/WEB-INF/jsp/rent.jsp").forward(req, resp);
+            req.getRequestDispatcher("/jsp/rent.jsp").forward(req, resp);
             return;
         }
         resp.sendRedirect("/companies");

@@ -21,7 +21,7 @@ public class ProfileServlet extends HttpServlet {
         ReadUserDto user = (ReadUserDto) req.getSession().getAttribute("user");
         Optional<PersonalInfoDto> maybePersonalInfo = personalInfoService.read(user);
         req.setAttribute("personalInfo", maybePersonalInfo.orElse(null));
-        req.getRequestDispatcher("/WEB-INF/jsp/profile.jsp")
+        req.getRequestDispatcher("/jsp/profile.jsp")
                 .forward(req, resp);
     }
 }

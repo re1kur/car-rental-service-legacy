@@ -1,7 +1,7 @@
 package dao;
 
 import entity.PersonalInfoEntity;
-import db.handle.ConnectionManager;
+import db.ConnectionManager;
 import lombok.Getter;
 
 import java.sql.*;
@@ -14,16 +14,16 @@ public class PersonalInfoDao implements Dao<PersonalInfoEntity> {
 
     private final static String FIND_BY_ID_SQL = """
             SELECT id, name, pass_no, birthday
-            FROM package.personal_info
+            FROM personal_info
             WHERE id = ?
             """;
     private final static String INSERT_OR_UPDATE_SQL = """
-            INSERT INTO package.personal_info 
+            INSERT INTO personal_info
             (id, name, pass_no, birthday)
             VALUES (?, ?, ?, ?)
             ON CONFLICT(id)
             DO UPDATE
-            SET 
+            SET
             name=EXCLUDED.name,
             pass_no=EXCLUDED.pass_no,
             birthday=EXCLUDED.birthday

@@ -28,9 +28,7 @@ public class PersonalInfoService {
     }
 
     public void create(PersonalInfoDto personalInfoDto) {
-        //fck validate, only mapping
         PersonalInfoEntity personalInfo = createMapper.map(personalInfoDto);
-        //create
         personalInfoDao.save(personalInfo);
     }
 }

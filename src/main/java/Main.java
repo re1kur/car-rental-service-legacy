@@ -1,9 +1,5 @@
-import db.handle.ConnectionManager;
-
-import java.sql.SQLException;
 
 public class Main {
-    public static void main(String[] args) throws SQLException {
-        System.out.println(ConnectionManager.getConnection().getMetaData().getDatabaseProductName());
+    public static void main(String[] args) {
     }
 }

@@ -21,12 +21,12 @@ public class EditServlet extends HttpServlet {
         ReadUserDto user = (ReadUserDto) req.getSession().getAttribute("user");
         Optional<PersonalInfoDto> info = personalInfoService.read(user);
         req.setAttribute("personalInfo", info.orElse(null));
-        req.getRequestDispatcher("/WEB-INF/jsp/editPersonalInfo.jsp")
+        req.getRequestDispatcher("/jsp/editPersonalInfo.jsp")
                 .forward(req, resp);
     }
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         ReadUserDto user = (ReadUserDto) req.getSession().getAttribute("user");
 
         personalInfoService.create(PersonalInfoDto.builder()

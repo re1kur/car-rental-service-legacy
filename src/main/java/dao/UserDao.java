@@ -1,7 +1,7 @@
 package dao;
 
 import entity.UserEntity;
-import db.handle.ConnectionManager;
+import db.ConnectionManager;
 import lombok.Getter;
 
 import java.sql.*;
@@ -17,18 +17,18 @@ public class UserDao implements Dao<UserEntity> {
     }
 
     private static final String DELETE_SQL = """
-            DELETE FROM package.users
+            DELETE FROM users
             WHERE id = ?
             """;
 
     private static final String INSERT_SQL = """
-            INSERT INTO package.users (email, username, password)
+            INSERT INTO users (email, username, password)
             VALUES (?, ?, ?)
             """;
 
     private static final String UPDATE_SQL = """
-            UPDATE package.users 
-            SET 
+            UPDATE users
+            SET
                 email = ?,
                 username = ?,
                 password = ?
@@ -37,7 +37,7 @@ public class UserDao implements Dao<UserEntity> {
 
     private static final String FIND_ALL_SQL = """
             SELECT id, username, password, email, role
-            FROM package.users
+            FROM users
             """;
 
     private static final String FIND_BY_ID_SQL = FIND_ALL_SQL + """

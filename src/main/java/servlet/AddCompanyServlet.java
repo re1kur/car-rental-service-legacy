@@ -8,7 +8,6 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import service.CompanyService;
-import util.PropertiesUtil;
 
 import java.io.IOException;
 
@@ -16,11 +15,10 @@ import java.io.IOException;
 @WebServlet("/addCompany")
 public class AddCompanyServlet extends HttpServlet {
     private final CompanyService companyService = CompanyService.getInstance();
-    private final String WAR_NAME = PropertiesUtil.getProperty("name.war");
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.getRequestDispatcher("/WEB-INF/jsp/addCompany.jsp")
+        req.getRequestDispatcher("/jsp/addCompany.jsp")
                 .forward(req, resp);
     }
 

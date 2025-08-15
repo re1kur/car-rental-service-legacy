@@ -1,0 +1,18 @@
+services:
+  database:
+    image: postgres:17-alpine
+    env_file:
+      - environment/sql.env
+    volumes:
+      - ./db-init:/docker-entrypoint-initdb.d
+    ports:
+      - "5432:5432"
+  webapp:
+    build:
+      dockerfile: Dockerfile
+    volumes:
+      - ./mock:./resources
+    ports:
+      - "8080:8080"
+    depends_on:
+      - database

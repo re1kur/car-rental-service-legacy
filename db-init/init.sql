@@ -1,0 +1,39 @@
+CREATE TABLE IF NOT EXISTS users (
+    id SERIAL PRIMARY KEY,
+    email VARCHAR(128) NOT NULL UNIQUE,
+    username VARCHAR(64) NOT NULL UNIQUE,
+    password VARCHAR(128) NOT NULL,
+    role VARCHAR(32) NOT NULL DEFAULT 'USER'
+);
+
+CREATE TABLE IF NOT EXISTS personal_info (
+    id INT PRIMARY KEY REFERENCES users (id) ON DELETE CASCADE,
+    name VARCHAR(64) NOT NULL,
+    pass_no CHAR(10) NOT NULL UNIQUE,
+    birthday DATE NOT NULL CHECK (birthday <= CURRENT_DATE - INTERVAL '18 years')
+);
+
+CREATE TABLE IF NOT EXISTS companies (
+    id SMALLSERIAL PRIMARY KEY,
+    name VARCHAR(64) NOT NULL UNIQUE,
+    img_key VARCHAR(256) NOT NULL UNIQUE
+);
+
+CREATE TABLE IF NOT EXISTS cars (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(64) NOT NULL,
+    company_id SMALLINT NOT NULL REFERENCES companies(id) ON DELETE CASCADE,
+    year_release TIMESTAMP NOT NULL CHECK (
+        EXTRACT(YEAR FROM year_release) > 1900
+        AND EXTRACT(YEAR FROM year_release) < EXTRACT(YEAR FROM now())
+    )
+);
+
+CREATE TABLE IF NOT EXISTS rentals (
+    id BIGSERIAL PRIMARY KEY,
+    owner_id INT NOT NULL REFERENCES users (id),
+    img_key VARCHAR(256) NOT NULL UNIQUE,
+    car_id INT NOT NULL REFERENCES cars(id),
+    price INT NOT NULL CHECK (price > 0),
+    description VARCHAR(256) NOT NULL
+);

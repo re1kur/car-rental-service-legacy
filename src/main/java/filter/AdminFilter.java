@@ -16,7 +16,7 @@ public class AdminFilter implements Filter {
         HttpServletResponse resp = (HttpServletResponse) servletResponse;
 
         ReadUserDto user = (ReadUserDto) req.getSession().getAttribute("user");
-        if (user.getRole().equals("admin")) {
+        if (user.getRole().equals("ADMIN")) {
             filterChain.doFilter(servletRequest, servletResponse);
             return;
         }

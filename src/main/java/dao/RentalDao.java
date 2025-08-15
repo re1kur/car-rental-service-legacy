@@ -1,7 +1,7 @@
 package dao;
 
 import entity.RentalEntity;
-import db.handle.ConnectionManager;
+import db.ConnectionManager;
 import lombok.Getter;
 import lombok.SneakyThrows;
 
@@ -25,7 +25,7 @@ public class RentalDao implements Dao<RentalEntity> {
 
     private static final String FIND_ALL_SQL = """
             SELECT id, car_id, price, owner_id, description, img_key
-            FROM package.rental
+            FROM rentals
             """;
     private static final String FIND_BY_ID_SQL = FIND_ALL_SQL + """
             where id = ?
@@ -37,14 +37,14 @@ public class RentalDao implements Dao<RentalEntity> {
 
     private static final String FIND_BY_COMPANY_ID_SQL = """
             SELECT r.id, r.car_id, r.price, r.owner_id, r.description, r.img_key
-            FROM package.rental AS r
-            JOIN package.car AS c
+            FROM rentals AS r
+            JOIN cars AS c
             ON c.id = r.car_id
             WHERE c.company_id = ?
             """;
 
     private static final String INSERT_SQL = """
-            INSERT INTO package.rental (car_id, price, owner_id, description, img_key)
+            INSERT INTO rentals (car_id, price, owner_id, description, img_key)
             VALUES (?, ?, ?, ?, ?)
             """;
 

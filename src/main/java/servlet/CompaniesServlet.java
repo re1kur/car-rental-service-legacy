@@ -20,7 +20,7 @@ public class CompaniesServlet extends HttpServlet {
         List<ReadCompanyDto> readCompanyDtos = companyService.readAll();
         req.setAttribute("companies", readCompanyDtos);
         req.setAttribute("companiesSize", readCompanyDtos.size());
-        req.getRequestDispatcher("/WEB-INF/jsp/companies.jsp")
+        req.getRequestDispatcher("/jsp/companies.jsp")
                 .forward(req, resp);
     }
 }

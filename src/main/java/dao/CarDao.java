@@ -1,7 +1,7 @@
 package dao;
 
 import entity.CarEntity;
-import db.handle.ConnectionManager;
+import db.ConnectionManager;
 import lombok.Getter;
 
 import java.sql.*;
@@ -20,7 +20,7 @@ public class CarDao implements Dao<CarEntity> {
 
     private static final String FIND_ALL_SQL = """
             SELECT id, name, company_id, year_release
-            FROM package.car
+            FROM cars
             """;
 
     private static final String FIND_BY_ID_SQL = FIND_ALL_SQL + """
@@ -28,7 +28,7 @@ public class CarDao implements Dao<CarEntity> {
             """;
 
     private static final String INSERT_SQL = """
-                INSERT INTO package.car (name, company_id, year_release)
+                INSERT INTO cars (name, company_id, year_release)
                VALUES (?, ?, ?)
             """;
 

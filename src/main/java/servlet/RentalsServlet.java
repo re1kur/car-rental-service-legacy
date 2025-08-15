@@ -18,7 +18,7 @@ public class RentalsServlet extends HttpServlet {
         String companyId = req.getParameter("company_id");
         req.setAttribute("rentals",
                 companyId == null ? rentalService.readAll() : rentalService.readByCompanyId(Integer.parseInt(companyId)));
-        req.getRequestDispatcher("/WEB-INF/jsp/rentals.jsp")
+        req.getRequestDispatcher("/jsp/rentals.jsp")
                 .forward(req, resp);
     }
 

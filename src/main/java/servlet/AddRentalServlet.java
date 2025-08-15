@@ -29,7 +29,7 @@ public class AddRentalServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         List<ReadCompanyDto> companies = companyService.readAll();
         req.setAttribute("companies", companies);
-        req.getRequestDispatcher("/WEB-INF/jsp/addRental.jsp")
+        req.getRequestDispatcher("/jsp/addRental.jsp")
                 .forward(req, resp);
     }
 
@@ -55,7 +55,7 @@ public class AddRentalServlet extends HttpServlet {
             doGet(req, resp);
             return;
         }
-        resp.sendRedirect("/rentals");
+        resp.sendRedirect("/project-init/rentals");
     }
 
 }
