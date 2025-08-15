@@ -1,6 +1,7 @@
--- admin user
+-- admin and user
 INSERT INTO users(email, username, password, role)
-VALUES ('admin@mail.com', 'admin', 'admin', 'ADMIN');
+VALUES ('admin@mail.com', 'admin', 'admin', 'ADMIN'),
+VALUES ('user@mail.com', 'user', 'user', 'USER');
 
 -- обычные пользователи
 INSERT INTO users (email, username, password, role) VALUES
