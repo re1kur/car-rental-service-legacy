@@ -10,7 +10,7 @@ import java.util.UUID;
 public class CreateRentalMapper implements Mapper<CreateRentalDto, RentalEntity>{
     @Getter
     private final static CreateRentalMapper instance = new CreateRentalMapper();
-    private static final String IMAGE_FOLDER = "project-init/rentals/";
+    private static final String IMAGE_FOLDER = "rentals/";
     private final CreateCarMapper carMapper = CreateCarMapper.getInstance();
 
     private CreateRentalMapper() {

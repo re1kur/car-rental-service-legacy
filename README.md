@@ -68,5 +68,19 @@
 ---
 
 ## Скриншоты
+![img.png](readme-img/img2.png)
 
+![img.png](readme-img/img7.png)
+
+![img.png](readme-img/img8.png)
+
+![img.png](readme-img/img3.png)
+
+![img.png](readme-img/img.png)
+
+![img.png](readme-img/img5.png)
+
+![img.png](readme-img/img6.png)
+
+![img.png](readme-img/img4.png)
 ---

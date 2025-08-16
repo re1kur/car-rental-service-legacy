@@ -55,7 +55,7 @@ public class AddRentalServlet extends HttpServlet {
             doGet(req, resp);
             return;
         }
-        resp.sendRedirect("/project-init/rentals");
+        resp.sendRedirect("/rentals");
     }
 
 }
